@@ -81,10 +81,10 @@ jobs:
         make defconfig
 
     - name: Setup Debug Session
+      if: env.SSH_ACTIONS == 'true'
       env:
        SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
        uses: tete1030/safe-debugger-action@master
-       if: env.SSH_ACTIONS == 'true'
 
     - name: Download package
       id: package
